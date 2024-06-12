@@ -103,6 +103,7 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      //MAGIC CODE DO NOT TOUCH
       let currentImageIndex = 0;
       let currentDescriptionIndex = 0;
       //declare
@@ -150,6 +151,7 @@
           deskription.length;
         const nextCard = cards[currentImageIndex];
         const nextDeskription = deskription[currentDescriptionIndex];
+        currentDeskripton.classList.remove("fade-in");
         currentCard.classList.add("rotate-out");
         currentDeskripton.classList.add("fade-out");
         setTimeout(() => {
