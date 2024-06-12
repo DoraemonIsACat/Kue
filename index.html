@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="container">
+        <!-- first row -->
+        <div class="row">
+          <div class="col-3 mt-3 desktop">
+            <img
+              src="image/Kue-kecil.png"
+              alt="Logo"
+              width="100"
+              height="100"
+            />
+          </div>
+          <div class="col mt-3 navbar-jodi desktop">
+            <p>Home</p>
+            <p>Product</p>
+            <p>Contact Us</p>
+          </div>
+          <!-- mobile -->
+          <div class="col hp">
+            <p class="tebal sedang">Jodi Moon Cakes</p>
+          </div>
+        </div>
+        <!-- second row -->
+        <div class="row margin-jodi">
+          <div class="col-lg-4 col-12">
+            <p class="tebal sedang desktop">Jodi Moon Cakes</p>
+            <div class="jodi active">
+              <p class="rasa tebal besar">Coklat</p>
+              <p class="deskripsi tipis kecil">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
+                non temporibus.
+              </p>
+            </div>
+            <div class="jodi">
+              <p class="rasa tebal besar">Keju</p>
+              <p class="deskripsi tipis kecil">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
+                non temporibus.
+              </p>
+            </div>
+            <div class="jodi">
+              <p class="rasa tebal besar">Matcha</p>
+              <p class="deskripsi tipis kecil">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
+                non temporibus.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg col-12 gambar">
+            <i
+              class="fa-solid fa-arrow-left kusor"
+              id="arrow-left"
+              onclick="previousImage()"
+            ></i>
+            <img src="image/Kue-kecil.png" alt="Logo" class="image active" />
+            <img src="image/Kue-kecil.png" alt="Logo" class="image" />
+            <img src="image/Kue-kecil.png" alt="Logo" class="image" />
+            <i
+              class="fa-solid fa-arrow-right kusor"
+              id="arrow-right"
+              onclick="nextImage()"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let currentImageIndex = 0;
+      let currentDescriptionIndex = 0;
+      //declare
+      const cards = document.querySelectorAll(".image");
+      const deskription = document.querySelectorAll(".jodi");
+      let canClick = true;
+
+      function nextImage() {
+        if (!canClick) return; // If the flag is false, exit the function
+
+        canClick = false; // Set the flag to false to prevent further clicks
+        const currentCard = cards[currentImageIndex];
+        const currentDeskripton = deskription[currentDescriptionIndex];
+        // cari index
+        currentImageIndex = (currentImageIndex + 1) % cards.length;
+        currentDescriptionIndex =
+          (currentDescriptionIndex + 1) % deskription.length;
+        //   declare card
+        const nextCard = cards[currentImageIndex];
+        const nextDeskription = deskription[currentDescriptionIndex];
+        // add effect & remove
+        currentDeskripton.classList.remove("fade-in");
+        currentCard.classList.add("rotate-out");
+        currentDeskripton.classList.add("fade-out");
+        setTimeout(() => {
+          currentCard.classList.remove("active", "rotate-out");
+          currentDeskripton.classList.remove("active", "fade-out");
+          //add effect
+          nextCard.classList.add("active", "rotate-in");
+          nextDeskription.classList.add("active", "fade-in");
+          canClick = true; // Reset the flag to true after the timeout
+        }, 1000); // Adjust the timeout to match the duration of your animation
+      }
+
+      function previousImage() {
+        if (!canClick) return; // If the flag is false, exit the function
+
+        canClick = false; // Set the flag to false to prevent further clicks
+        const currentCard = cards[currentImageIndex];
+        const currentDeskripton = deskription[currentDescriptionIndex];
+        currentImageIndex =
+          (currentImageIndex - 1 + cards.length) % cards.length;
+        currentDescriptionIndex =
+          (currentDescriptionIndex - 1 + deskription.length) %
+          deskription.length;
+        const nextCard = cards[currentImageIndex];
+        const nextDeskription = deskription[currentDescriptionIndex];
+        currentCard.classList.add("rotate-out");
+        currentDeskripton.classList.add("fade-out");
+        setTimeout(() => {
+          currentCard.classList.remove("active", "rotate-out");
+          currentDeskripton.classList.remove("active", "fade-out");
+          nextCard.classList.add("active", "rotate-in");
+          nextDeskription.classList.add("active", "fade-in");
+          canClick = true; // Reset the flag to true after the timeout
+        }, 1000); // Adjust the timeout to match the duration of your animation
+      }
+    </script>
+  </body>
+</html>

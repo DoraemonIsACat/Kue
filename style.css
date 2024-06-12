@@ -1,0 +1,165 @@
+.navbar-jodi {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tebal {
+  font-weight: 700;
+}
+
+.besar {
+  font-family: "PT Sans", sans-serif;
+  font-size: 3em;
+  font-style: normal;
+}
+
+.sedang {
+  font-family: "Alex Brush", cursive;
+  font-size: 2em;
+  font-style: normal;
+}
+
+.kecil {
+  font-family: "PT Sans", sans-serif;
+  font-size: 1em;
+  font-style: normal;
+}
+
+.tipis {
+  font-weight: 400;
+}
+
+.margin-jodi {
+  margin-top: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.gambar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5vw;
+  padding-left: 5vw;
+}
+
+.kusor {
+  cursor: pointer;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  font-size: xx-large;
+}
+
+.image.active {
+  display: block;
+}
+
+.image {
+  display: none;
+}
+
+.jodi.active {
+  display: block;
+}
+
+.jodi {
+  display: none;
+}
+
+.hp {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  body {
+    overflow: hidden;
+  }
+  .hp {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
+  }
+  .desktop {
+    display: none;
+  }
+  .image {
+    width: 300px;
+    height: 300px;
+  }
+  .kusor,
+  .gambar {
+    padding: 0;
+    margin: 0;
+  }
+
+  .besar,
+  .kecil {
+    text-align: center;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+.rotate-in {
+  animation: rotateIn 1s forwards;
+}
+.rotate-out {
+  animation: rotateOut 1s forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+/* @keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+} */
+/* @keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+} */
+@keyframes rotateIn {
+  from {
+    transform: translate(1000px, -1000px) rotate(-360deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate(0px, 0px) rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes rotateOut {
+  from {
+    transform: translate(0px, 0px) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate(1000px, 1000px) rotate(360deg);
+    opacity: 1;
+  }
+}
