@@ -138,16 +138,7 @@ body {
     transform: translateY(20px);
   }
 }
-/* @keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
-} */
-/* @keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-} */
+
 @keyframes rotateIn {
   from {
     transform: translate(1000px, -1000px) rotate(-360deg);
